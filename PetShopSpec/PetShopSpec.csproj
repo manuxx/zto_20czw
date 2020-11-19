@@ -69,7 +69,6 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Utilities\AssertionExtensions.cs" />
     <Compile Include="Utilities\CollectionExtensions.cs" />
     <Compile Include="PetShopSpec.cs" />
