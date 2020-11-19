@@ -19,6 +19,8 @@ namespace Training.DomainClasses
 
         public void Add(Pet newPet)
         {
+            if (newPet == null) 
+                return;
             foreach (var pet in _petsInTheStore) {
                 if (newPet.name == pet.name) 
                     return;
