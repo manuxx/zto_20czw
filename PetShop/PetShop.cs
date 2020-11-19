@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Training.DomainClasses
 {
@@ -19,6 +20,13 @@ namespace Training.DomainClasses
 
         public void Add(Pet newPet)
         {
+            foreach (var pet in _petsInTheStore)
+            {
+                if (pet.name == newPet.name)
+                    return;
+            }
+            if(!_petsInTheStore.Contains(newPet))
+                _petsInTheStore.Add(newPet);
         }
     }
 }
