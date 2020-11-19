@@ -19,7 +19,8 @@ namespace Training.DomainClasses
 
         public void Add(Pet newPet)
         {
-            _petsInTheStore.Add(newPet);
+            if (_petsInTheStore.IndexOf(newPet) == -1)
+                _petsInTheStore.Add(newPet);
         }
     }
 }
