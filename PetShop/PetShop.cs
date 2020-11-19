@@ -21,7 +21,7 @@ namespace Training.DomainClasses
         {
             foreach (var pet in _petsInTheStore)
             {
-                if (newPet == null || newPet.Equals(pet))
+                if (newPet == null || newPet.name == pet.name)
                 {
                     return;
                 }
