@@ -51,8 +51,7 @@ namespace Training.Spec
         Establish context = () => pet = new Pet();
         Because of = () => subject.Add(pet);
 
-        It should_store_a_new_pet_in_the_shop = () => 
-            subject.AllPets().ShouldContain(pet);
+        It should_store_a_new_pet_in_the_shop = () => subject.AllPets().ShouldContain(pet);
 
         private static Pet pet;
     }
