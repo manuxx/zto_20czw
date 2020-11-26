@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Training.DomainClasses
 {
@@ -38,6 +39,13 @@ namespace Training.DomainClasses
                 }
             }
             return new ReadOnlyWrapper<Pet>(_catsList);
+        }
+
+        public IEnumerable<Pet> AllPetsSortedByName()
+        {
+            List<Pet> _pets = new List<Pet>(_petsInTheStore);
+            _pets.Sort((pet1, pet2) => pet1.name.CompareTo(pet2.name));
+            return _pets;
         }
     }
 }
