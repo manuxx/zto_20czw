@@ -207,7 +207,7 @@ namespace Training.Spec
             var foundPets = subject.AllMice();
             foundPets.ShouldContainOnly(mouse_Dixie, mouse_Jerry);
         };
-        [Ignore("Will be implemented next")]
+        
         private It should_be_able_to_find_all_female_pets = () =>
         {
             var foundPets = subject.AllFemalePets();
