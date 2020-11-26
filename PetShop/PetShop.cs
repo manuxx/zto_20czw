@@ -29,7 +29,12 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPetsSortedByName()
         {
-            throw new NotImplementedException("");
+            List<Pet> l = new List<Pet>(_petsInTheStore);
+            l.Sort((a, b) =>
+            {
+                return String.Compare(a.name, b.name);
+            });
+            return l.OneAtATime();
         }
 
         public IEnumerable<Pet> AllCats()

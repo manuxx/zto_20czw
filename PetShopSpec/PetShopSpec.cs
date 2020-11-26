@@ -204,7 +204,6 @@ namespace Training.Spec
         };
     }
 
-    [Ignore("Second")]
     class when_sorting_pets : concern_with_pets_for_sorting_and_filtering
     {
         It should_be_able_to_sort_by_name_ascending = () =>
