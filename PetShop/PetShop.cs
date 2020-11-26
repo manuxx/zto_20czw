@@ -27,9 +27,9 @@ namespace Training.DomainClasses
         }
 
         public IEnumerable<Pet> AllPetsSortedByName(){
-            List<Pet> petsAsList = new List<Pet>(_petsInTheStore);
-            petsAsList.Sort();
-            return new ReadOnlyWrapper<Pet>(petsAsList);
+            var pets = new List<Pet>(_petsInTheStore);
+            pets.Sort(((pet1, pet2) => String.Compare(pet1.name, pet2.name, StringComparison.Ordinal)));
+            return new ReadOnlyWrapper<Pet>(pets);
         }
 
         public void Add(Pet newPet)
