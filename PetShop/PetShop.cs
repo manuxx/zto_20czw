@@ -36,11 +36,9 @@ namespace Training.DomainClasses
             {
                 if (pet.species == Species.Cat)
                 {
-                    cats.Add(pet);
+                    yield return pet;
                 }
             }
-
-            return new ReadOnlyWrapper<Pet>(cats);
         }
 
         public IEnumerable<Pet> AllPetsSortedByName()
@@ -48,7 +46,7 @@ namespace Training.DomainClasses
             var petsToBeSorted = new List<Pet>(_petsInTheStore);
             petsToBeSorted.Sort((x, y) => String.Compare(x.name, y.name, StringComparison.Ordinal));
 
-            return new ReadOnlyWrapper<Pet>(petsToBeSorted);
+            return petsToBeSorted;
         }
     }
 }
