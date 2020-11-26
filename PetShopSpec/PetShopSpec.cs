@@ -7,37 +7,41 @@ using Machine.Specifications.AutoMocking.Rhino;
 
 namespace Training.Spec
 {
-    public abstract class pet_shop_concern :  Specification<PetShop>
+    public abstract class pet_shop_concern : Specification<PetShop>
     {
         Establish context = () =>
         {
             pet_initial_content = new List<Pet>();
             ProvideBasicConstructorArgument(pet_initial_content);
-        }; 
+        };
+
         protected static IList<Pet> pet_initial_content;
     }
-    
+
     [Subject(typeof(PetShop))]
     public class when_counting_pets_in_the_shop : pet_shop_concern
     {
-        Establish context = () => pet_initial_content.AddManyItems(new Pet(), new Pet()); 
-        Because of = () => number_of_pets = subject.AllPets().CountItems(); 
+        Establish context = () => pet_initial_content.AddManyItems(new Pet(), new Pet());
+        Because of = () => number_of_pets = subject.AllPets().CountItems();
         private static int number_of_pets;
-        It should_return_the_number_of_all_pets_in_the_shop = () => 
-            number_of_pets.ShouldEqual(2); 
+
+        It should_return_the_number_of_all_pets_in_the_shop = () =>
+            number_of_pets.ShouldEqual(2);
     }
 
-    [Subject(typeof (PetShop))]
+    [Subject(typeof(PetShop))]
     public class when_asking_for_all_pets : pet_shop_concern
     {
-        Establish context = () => 
+        Establish context = () =>
         {
             first_pet = new Pet();
             second_pet = new Pet();
             pet_initial_content.AddManyItems(first_pet, second_pet);
         };
+
         Because of = () => pets_in_shop = subject.AllPets();
-        It should_return_all_the_pets_in_the_shop = () => 
+
+        It should_return_all_the_pets_in_the_shop = () =>
             pet_initial_content.ShouldContainOnly(first_pet, second_pet);
 
         private static Pet first_pet;
@@ -51,7 +55,7 @@ namespace Training.Spec
         Establish context = () => pet = new Pet();
         Because of = () => subject.Add(pet);
 
-        It should_store_a_new_pet_in_the_shop = () => 
+        It should_store_a_new_pet_in_the_shop = () =>
             subject.AllPets().ShouldContain(pet);
 
         private static Pet pet;
@@ -65,27 +69,30 @@ namespace Training.Spec
             pet = new Pet();
             pet_initial_content.Add(pet);
         };
-        Because of = () => 
+
+        Because of = () =>
             subject.Add(pet);
 
-        It should_store_a_pet_in_the_shop_once = () => 
+        It should_store_a_pet_in_the_shop_once = () =>
             subject.AllPets().CountItems().ShouldEqual(1);
 
         private static Pet pet;
     }
 
 
-    [Subject(typeof (PetShop))]
+    [Subject(typeof(PetShop))]
     public class when_adding_a_new_pet_with_existing_name_ : pet_shop_concern
     {
         Establish context = () =>
-                          {
-                              fluffy_the_first = new Pet {name = "Fluffy"};
-                              fluffy_the_second = new Pet {name = "Fluffy"};
-                              pet_initial_content.Add(fluffy_the_first);
-                          };
+        {
+            fluffy_the_first = new Pet {name = "Fluffy"};
+            fluffy_the_second = new Pet {name = "Fluffy"};
+            pet_initial_content.Add(fluffy_the_first);
+        };
+
         Because of = () => subject.Add(fluffy_the_second);
-        It should_contain_only_one_pet_of_the_name_in_the_store = () => 
+
+        It should_contain_only_one_pet_of_the_name_in_the_store = () =>
             subject.AllPets().CountItems().ShouldEqual(1);
 
         private static Pet fluffy_the_first;
@@ -96,16 +103,22 @@ namespace Training.Spec
     [Subject(typeof(PetShop))]
     class when_trying_to_change_returned_collection_of_pets : pet_shop_concern
     {
-        Establish c = () => pet_initial_content.AddManyItems(new Pet { name = "Pixie" }, new Pet { name = "Dixie" });
+        Establish c = () => pet_initial_content.AddManyItems(new Pet {name = "Pixie"}, new Pet {name = "Dixie"});
+
         Because b = () =>
         {
             IEnumerable<Pet> returned_pets = subject.AllPets();
-            exception = Catch.Exception(() => { var x = (ICollection<Pet>)returned_pets; });
+            exception = Catch.Exception(() =>
+            {
+                var x = (ICollection<Pet>) returned_pets;
+            });
         };
+
         private static IEnumerable<Pet> returned_collection_of_pets;
         private static Exception exception;
         It invalid_cast_exception_should_be_thrown = () => exception.ShouldBeOfExactType<InvalidCastException>();
     }
+
     public class concern_with_pets_for_sorting_and_filtering : pet_shop_concern
     {
         private Establish c = () =>
@@ -176,13 +189,13 @@ namespace Training.Spec
                 yearOfBirth = 2011
             };
             pet_initial_content.AddManyItems(cat_Tom,
-                                             cat_Jinx,
-                                             dog_Huckelberry,
-                                             dog_Lassie,
-                                             dog_Pluto,
-                                             rabbit_Fluffy,
-                                             mouse_Dixie,
-                                             mouse_Jerry);
+                cat_Jinx,
+                dog_Huckelberry,
+                dog_Lassie,
+                dog_Pluto,
+                rabbit_Fluffy,
+                mouse_Dixie,
+                mouse_Jerry);
         };
 
         protected static Pet mouse_Dixie;
@@ -202,48 +215,49 @@ namespace Training.Spec
             var foundPets = subject.AllCats();
             foundPets.ShouldContainOnly(cat_Tom, cat_Jinx);
         };
+
         private It should_be_able_to_find_all_mice = () =>
         {
             var foundPets = subject.AllMice();
             foundPets.ShouldContainOnly(mouse_Dixie, mouse_Jerry);
         };
-        [Ignore("Will be implemented next")]
+
         private It should_be_able_to_find_all_female_pets = () =>
         {
             var foundPets = subject.AllFemalePets();
             foundPets.ShouldContainOnly(dog_Lassie, mouse_Dixie);
         };
-        [Ignore("Will be implemented next")]
+
         private It should_be_able_to_find_all_cats_or_dogs = () =>
         {
             var foundPets = subject.AllCatsOrDogs();
             foundPets.ShouldContainOnly(cat_Tom, cat_Jinx, dog_Huckelberry, dog_Lassie, dog_Pluto);
         };
-        [Ignore("Will be implemented next")]
+
         private It should_be_able_to_find_all_pets_but_not_mice = () =>
         {
             var foundPets = subject.AllPetsButNotMice();
             foundPets.ShouldContainOnly(cat_Tom, cat_Jinx, dog_Huckelberry, dog_Lassie, dog_Pluto, rabbit_Fluffy);
         };
-        [Ignore("Will be implemented next")]
+
         private It should_be_able_to_find_all_pets_born_after_2010 = () =>
         {
             var foundPets = subject.AllPetsBornAfter2010();
             foundPets.ShouldContainOnly(dog_Pluto, rabbit_Fluffy, mouse_Dixie, mouse_Jerry);
         };
-        [Ignore("Will be implemented next")]
+
         private It should_be_able_to_find_all_young_dogs = () =>
         {
             var foundPets = subject.AllDogsBornAfter2010();
             foundPets.ShouldContainOnly(dog_Pluto);
         };
-        [Ignore("Will be implemented next")]
+
         private It should_be_able_to_find_all_male_dogs = () =>
         {
             var foundPets = subject.AllMaleDogs();
             foundPets.ShouldContainOnly(dog_Huckelberry, dog_Pluto);
         };
-        [Ignore("Will be implemented next")]
+
         private It should_be_able_to_find_all_young_pets_or_rabbits = () =>
         {
             var foundPets = subject.AllPetsBornAfter2011OrRabbits();
@@ -262,6 +276,4 @@ namespace Training.Spec
                 dog_Pluto, cat_Tom);
         };
     };
-
 }
-
