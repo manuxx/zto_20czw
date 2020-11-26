@@ -92,6 +92,7 @@ namespace Training.Spec
         private static Pet fluffy_the_second;
     }
 
+
     [Subject(typeof(PetShop))]
     class when_trying_to_change_returned_collection_of_pets : pet_shop_concern
     {
@@ -105,5 +106,6 @@ namespace Training.Spec
         private static Exception exception;
         It invalid_cast_exception_should_be_thrown = () => exception.ShouldBeOfExactType<InvalidCastException>();
     }
+    
 }
 
