@@ -88,7 +88,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllMaleDogs()
         {
-            throw new NotImplementedException();
+            return All(pet => pet.sex == Sex.Male && pet.species == Species.Dog);
         }
 
         public IEnumerable<Pet> AllPetsBornAfter2011OrRabbits()
