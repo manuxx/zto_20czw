@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using Training.DomainClasses;
 
-static internal class EnumerableExt
+namespace Training.DomainClasses
 {
-    public static IEnumerable<T> OneAtATime<T>(this IEnumerable<T> items)
+    static internal class EnumerableExt
     {
-        foreach (var item in items)
-            yield return item;
+        public static IEnumerable<T> OneAtATime<T>(this IEnumerable<T> items)
+        {
+            foreach (var item in items)
+                yield return item;
+        }
     }
 }
