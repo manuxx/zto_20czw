@@ -30,11 +30,8 @@ namespace Training.DomainClasses
         public IEnumerable<Pet> AllPetsSortedByName()
         {
             List<Pet> l = new List<Pet>(_petsInTheStore);
-            l.Sort((a, b) =>
-            {
-                return String.Compare(a.name, b.name);
-            });
-            return l.OneAtATime();
+            l.Sort((a, b) => String.Compare(a.name, b.name));
+            return l;
         }
 
         public IEnumerable<Pet> AllCats()
