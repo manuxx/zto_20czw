@@ -57,7 +57,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllCatsOrDogs()
         {
-            throw new NotImplementedException();
+            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Filter(pet => pet.species.Equals(Species.Dog) || pet.species.Equals(Species.Cat)));
         }
 
         public IEnumerable<Pet> AllPetsButNotMice()
