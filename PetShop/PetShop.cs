@@ -9,7 +9,7 @@ namespace Training.DomainClasses
 
         public PetShop(IList<Pet> petsInTheStore)
         {
-            this._petsInTheStore = petsInTheStore;
+            _petsInTheStore = petsInTheStore;
         }
 
         public IEnumerable<Pet> AllPets()
@@ -41,8 +41,48 @@ namespace Training.DomainClasses
         public IEnumerable<Pet> AllPetsSortedByName()
         {
             var list = new List<Pet>(_petsInTheStore);
-            list.Sort((pet, pet1) => pet.name.CompareTo(pet1.name));
+            list.Sort((pet, pet1) => String.Compare(pet.name, pet1.name, StringComparison.Ordinal));
             return list;
+        }
+
+        public IEnumerable<Pet> AllMice()
+        {
+            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Filter(pet => pet.species.Equals(Species.Mouse)));
+        }
+
+        public IEnumerable<Pet> AllFemalePets()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Pet> AllCatsOrDogs()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Pet> AllPetsButNotMice()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Pet> AllPetsBornAfter2010()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Pet> AllDogsBornAfter2010()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Pet> AllMaleDogs()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Pet> AllPetsBornAfter2011OrRabbits()
+        {
+            throw new NotImplementedException();
         }
     }
 }
