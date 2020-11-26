@@ -5,3 +5,10 @@ pomiski++
 kochanski++
 beresnik++
 hodziutko+
+
+lab2:
+horodecki +
+pomiski+
+siudek+
+pliszka+
+sztenderski+

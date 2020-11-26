@@ -26,5 +26,23 @@ namespace Training.DomainClasses
             } 
             _petsInTheStore.Add(newPet);
         }
+
+        public IEnumerable<Pet> AllCats()
+        {
+            foreach (var pet in _petsInTheStore)
+            {
+                if (pet.species == Species.Cat)
+                {
+                    yield return pet;
+                }
+            }
+        }
+
+        public IEnumerable<Pet> AllPetsSortedByName()
+        {
+            var list = new List<Pet>(_petsInTheStore);
+            list.Sort((pet, pet1) => pet.name.CompareTo(pet1.name));
+            return list;
+        }
     }
 }
