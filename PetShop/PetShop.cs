@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -30,12 +31,24 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllCats()
         {
-            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Where(pet => pet.species == Species.Cat));
+            var cats = new List<Pet>();
+            foreach (var pet in _petsInTheStore)
+            {
+                if (pet.species == Species.Cat)
+                {
+                    cats.Add(pet);
+                }
+            }
+
+            return new ReadOnlyWrapper<Pet>(cats);
         }
 
         public IEnumerable<Pet> AllPetsSortedByName()
         {
-            return new ReadOnlyWrapper<Pet>(_petsInTheStore.OrderBy(pet => pet.name));
+            var petsToBeSorted = new List<Pet>(_petsInTheStore);
+            petsToBeSorted.Sort((x, y) => String.Compare(x.name, y.name, StringComparison.Ordinal));
+
+            return new ReadOnlyWrapper<Pet>(petsToBeSorted);
         }
     }
 }
