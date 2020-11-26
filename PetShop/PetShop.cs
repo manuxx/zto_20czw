@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Training.DomainClasses
 {
@@ -15,6 +17,19 @@ namespace Training.DomainClasses
         public IEnumerable<Pet> AllPets()
         {
             return new ReadOnlyWrapper<Pet>(_petsInTheStore);
+        }
+
+        public IEnumerable<Pet> AllCats(){
+            foreach (var pet in _petsInTheStore) {
+                if (pet.species == Species.Cat)
+                    yield return pet;
+            }
+        }
+
+        public IEnumerable<Pet> AllPetsSortedByName(){
+            List<Pet> petsAsList = new List<Pet>(_petsInTheStore);
+            petsAsList.Sort();
+            return new ReadOnlyWrapper<Pet>(petsAsList);
         }
 
         public void Add(Pet newPet)
