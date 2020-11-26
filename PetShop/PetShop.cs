@@ -41,8 +41,7 @@ namespace Training.DomainClasses
         }
         public IEnumerator<Pet> GetEnumerator()
         {
-            foreach (var item in _petsInTheStore)
-                yield return item;
+            return _petsInTheStore.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
