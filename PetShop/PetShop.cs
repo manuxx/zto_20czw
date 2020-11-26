@@ -82,7 +82,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPetsBornAfter2011OrRabbits()
         {
-            throw new NotImplementedException();
+            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Filter(pet => pet.yearOfBirth > 2011 || pet.species.Equals(Species.Rabbit)));
         }
     }
 }
