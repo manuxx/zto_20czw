@@ -52,7 +52,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllFemalePets()
         {
-            throw new NotImplementedException();
+            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Filter(pet => pet.sex.Equals(Sex.Female)));
         }
 
         public IEnumerable<Pet> AllCatsOrDogs()
