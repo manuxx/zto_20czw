@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Training.DomainClasses
 {
@@ -14,9 +15,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPets()
         {
-            foreach (var pet in _petsInTheStore)
-                yield return pet;
-            
+            return _petsInTheStore.OneAtATime();
         }
 
         public void Add(Pet newPet)
