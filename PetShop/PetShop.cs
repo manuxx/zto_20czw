@@ -15,11 +15,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPets()
         {
-<<<<<<< HEAD
             return new ReadOnlyWrapper<Pet> (_petsInTheStore);
-=======
-            return new ReadOnlyWrapper<Pet>(_petsInTheStore);
->>>>>>> c31e63bc092667bef9d5dfb3fed1bb9428cf794a
         }
 
         public void Add(Pet newPet)
@@ -30,6 +26,16 @@ namespace Training.DomainClasses
                     return;
             } 
             _petsInTheStore.Add(newPet);
+        }
+
+        public IEnumerable<Pet> AllCats()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Pet> AllPetsSortedByName()
+        {
+            throw new NotImplementedException();
         }
     }
 }
