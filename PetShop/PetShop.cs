@@ -14,7 +14,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPets()
         {
-            return _petsInTheStore.OneAtATime();
+            return new ReadOnlyWrapper<Pet>(_petsInTheStore);
         }
 
         public void Add(Pet newPet)
