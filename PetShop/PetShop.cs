@@ -30,7 +30,11 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllCats()
         {
-            throw new NotImplementedException();
+            foreach (var pet in AllPets())
+            {
+                if (pet.species == Species.Cat)
+                    yield return pet;
+            }
         }
 
         public IEnumerable<Pet> AllPetsSortedByName()
