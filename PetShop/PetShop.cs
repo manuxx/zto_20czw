@@ -15,7 +15,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPets()
         {
-            return EnumerableExt.OneAtATime(_petsInTheStore);
+            return new ReadOnlySet(_petsInTheStore);
         }
 
         public void Add(Pet newPet)
@@ -26,6 +26,26 @@ namespace Training.DomainClasses
                     return;
             } 
             _petsInTheStore.Add(newPet);
+        }
+    }
+
+    public class ReadOnlySet : IEnumerable<Pet>
+    {
+        private readonly IList<Pet> _petsInTheStore;
+
+        public ReadOnlySet(IList<Pet> petsInTheStore)
+        {
+            _petsInTheStore = petsInTheStore;
+        }
+
+        public IEnumerator<Pet> GetEnumerator()
+        {
+            return _petsInTheStore.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
