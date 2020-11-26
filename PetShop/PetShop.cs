@@ -78,7 +78,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPetsBornAfter2010()
         {
-            throw new NotImplementedException();
+            return All(pet => pet.yearOfBirth > 2010);
         }
 
         public IEnumerable<Pet> AllDogsBornAfter2010()
