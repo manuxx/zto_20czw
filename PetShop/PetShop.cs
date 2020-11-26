@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -27,25 +26,6 @@ namespace Training.DomainClasses
                     return;
             } 
             _petsInTheStore.Add(newPet);
-        }
-    }
-
-    public class ReadOnlyWrapper<TItem> : IEnumerable<TItem>
-    {
-        private IEnumerable<TItem> _petsInTheStore;
-
-        public ReadOnlyWrapper(IEnumerable<TItem> petsInTheStore)
-        {
-            _petsInTheStore = petsInTheStore;
-        }
-        public IEnumerator<TItem> GetEnumerator()
-        {
-            return _petsInTheStore.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
     }
 }
