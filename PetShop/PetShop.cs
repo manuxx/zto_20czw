@@ -72,12 +72,12 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllDogsBornAfter2010()
         {
-            throw new NotImplementedException();
+            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Filter(pet => pet.yearOfBirth > 2010 && pet.species.Equals(Species.Dog)));
         }
 
         public IEnumerable<Pet> AllMaleDogs()
         {
-            throw new NotImplementedException();
+            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Filter(pet => pet.species.Equals(Species.Dog) && pet.sex.Equals(Sex.Male)));
         }
 
         public IEnumerable<Pet> AllPetsBornAfter2011OrRabbits()
