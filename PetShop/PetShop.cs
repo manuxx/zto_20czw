@@ -26,5 +26,18 @@ namespace Training.DomainClasses
             } 
             _petsInTheStore.Add(newPet);
         }
+
+        public IEnumerable<Pet> AllCats()
+        {
+            IList<Pet> _catsList = new List<Pet>();
+            foreach (var pet in _petsInTheStore)
+            {
+                if (pet.species == Species.Cat)
+                {
+                    _catsList.Add(pet);
+                }
+            }
+            return new ReadOnlyWrapper<Pet>(_catsList);
+        }
     }
 }
