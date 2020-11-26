@@ -27,7 +27,6 @@ namespace Training.Spec
             number_of_pets.ShouldEqual(2); 
     }
 
-    [Subject(typeof (PetShop))]
     public class when_asking_for_all_pets : pet_shop_concern
     {
         Establish context = () => 
@@ -203,6 +202,7 @@ namespace Training.Spec
             foundPets.ShouldContainOnly(cat_Tom, cat_Jinx);
         };
     }
+    [Ignore("implement second")]
 
     class when_sorting_pets : concern_with_pets_for_sorting_and_filtering
     {
