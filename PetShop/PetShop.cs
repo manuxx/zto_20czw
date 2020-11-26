@@ -68,7 +68,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllCatsOrDogs()
         {
-            throw new NotImplementedException();
+            return All(pet => pet.species == Species.Cat || pet.species == Species.Dog);
         }
 
         public IEnumerable<Pet> AllPetsButNotMice()
