@@ -62,7 +62,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPetsButNotMice()
         {
-            throw new NotImplementedException();
+            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Filter(pet => !pet.species.Equals(Species.Mouse)));
         }
 
         public IEnumerable<Pet> AllPetsBornAfter2010()
