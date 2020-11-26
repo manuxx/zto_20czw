@@ -5,7 +5,9 @@ namespace Training.DomainClasses
 {
     public class ReadOnlyWrapper<TItem> : IEnumerable<TItem>
     {
-        private IEnumerable<TItem> _items;
+
+        private readonly IEnumerable<TItem> _items;
+
 
         public ReadOnlyWrapper(IEnumerable<TItem> items)
         {

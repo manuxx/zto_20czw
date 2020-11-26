@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 
+
 namespace Training.DomainClasses
 {
     static internal class EnumerableExt
