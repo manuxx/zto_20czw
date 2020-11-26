@@ -202,65 +202,52 @@ namespace Training.Spec
             var foundPets = subject.AllCats();
             foundPets.ShouldContainOnly(cat_Tom, cat_Jinx);
         };
-        It should_be_able_to_find_all_movies_published_by_pixar_or_disney = () =>
+        private It should_be_able_to_find_all_mice = () =>
         {
-            var results = subject.all_movies_published_by_pixar_or_disney();
-
-            results.ShouldContainOnly(a_bugs_life, pirates_of_the_carribean, cars);
+            var foundPets = subject.AllMice();
+            foundPets.ShouldContainOnly(mouse_Dixie, mouse_Jerry);
         };
         [Ignore("Will be implemented next")]
-        It should_be_able_to_find_all_movies_not_published_by_pixar = () =>
+        private It should_be_able_to_find_all_female_pets = () =>
         {
-            var results = subject.all_movies_not_published_by_pixar();
-
-            results.ShouldNotContain(cars, a_bugs_life);
+            var foundPets = subject.AllFemalePets();
+            foundPets.ShouldContainOnly(dog_Lassie, mouse_Dixie);
         };
         [Ignore("Will be implemented next")]
-        It should_be_able_to_find_all_movies_published_after_a_certain_year = () =>
+        private It should_be_able_to_find_all_cats_or_dogs = () =>
         {
-            var results = subject.all_movies_published_after(2004);
-
-            results.ShouldContainOnly(the_ring, shrek, theres_something_about_mary);
+            var foundPets = subject.AllCatsOrDogs();
+            foundPets.ShouldContainOnly(cat_Tom, cat_Jinx, dog_Huckelberry, dog_Lassie, dog_Pluto);
         };
         [Ignore("Will be implemented next")]
-        It should_be_able_to_find_all_movies_published_between_a_certain_range_of_years = () =>
+        private It should_be_able_to_find_all_pets_but_not_mice = () =>
         {
-            var results = subject.all_movies_published_between_years(1982, 2003);
-
-            results.ShouldContainOnly(indiana_jones_and_the_temple_of_doom, a_bugs_life, pirates_of_the_carribean);
+            var foundPets = subject.AllPetsButNotMice();
+            foundPets.ShouldContainOnly(cat_Tom, cat_Jinx, dog_Huckelberry, dog_Lassie, dog_Pluto, rabbit_Fluffy);
         };
-
         [Ignore("Will be implemented next")]
-        It should_be_able_to_find_all_kid_movies = () =>
+        private It should_be_able_to_find_all_pets_born_after_2010 = () =>
         {
-            var results = subject.all_kid_movies();
-
-            results.ShouldContainOnly(a_bugs_life, shrek, cars);
+            var foundPets = subject.AllPetsBornAfter2010();
+            foundPets.ShouldContainOnly(dog_Pluto, rabbit_Fluffy, mouse_Dixie, mouse_Jerry);
         };
-
         [Ignore("Will be implemented next")]
-        It should_be_able_to_find_all_action_movies = () =>
+        private It should_be_able_to_find_all_young_dogs = () =>
         {
-            var results = subject.all_action_movies();
-
-            results.ShouldContainOnly(indiana_jones_and_the_temple_of_doom, pirates_of_the_carribean);
+            var foundPets = subject.AllDogsBornAfter2010();
+            foundPets.ShouldContainOnly(dog_Pluto);
         };
-
-
         [Ignore("Will be implemented next")]
-        It should_be_able_to_find_recient_kid_movies = () =>
+        private It should_be_able_to_find_all_male_dogs = () =>
         {
-            var results = subject.all_kid_movies_published_after(2003);
-
-            results.ShouldContainOnly(shrek, cars);
+            var foundPets = subject.AllMaleDogs();
+            foundPets.ShouldContainOnly(dog_Huckelberry, dog_Pluto);
         };
-
         [Ignore("Will be implemented next")]
-        It should_be_able_to_find_horror_Or_actionmovies = () =>
+        private It should_be_able_to_find_all_young_pets_or_rabbits = () =>
         {
-            var results = subject.all_horror_or_action();
-
-            results.ShouldContainOnly(indiana_jones_and_the_temple_of_doom, pirates_of_the_carribean, the_ring);
+            var foundPets = subject.AllPetsBornAfter2011OrRabbits();
+            foundPets.ShouldContainOnly(mouse_Jerry, rabbit_Fluffy);
         };
     }
 
