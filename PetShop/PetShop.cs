@@ -73,7 +73,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPetsButNotMice()
         {
-            throw new NotImplementedException();
+            return All(pet => pet.species != Species.Mouse);
         }
 
         public IEnumerable<Pet> AllPetsBornAfter2010()
