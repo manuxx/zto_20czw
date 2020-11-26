@@ -42,7 +42,7 @@ namespace Training.DomainClasses
         {
             var list = new List<Pet>(_petsInTheStore);
             list.Sort((a,b) => String.Compare(a.name, b.name));
-            return new ReadOnlyWrapper<Pet>(list);
+            return list;
         }
     }
 }
