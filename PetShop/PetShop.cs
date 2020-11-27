@@ -126,7 +126,13 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPetsBornAfter2011OrRabbits()
         {
-            throw new NotImplementedException();
+            foreach (var pet in _petsInTheStore)
+            {
+                if (pet.species == Species.Rabbit || pet.yearOfBirth > 2011)
+                {
+                    yield return pet;
+                }
+            }
         }
     }
 }

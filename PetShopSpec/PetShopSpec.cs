@@ -243,7 +243,7 @@ namespace Training.Spec
             var foundPets = subject.AllMaleDogs();
             foundPets.ShouldContainOnly(dog_Huckelberry, dog_Pluto);
         };
-        [Ignore("Will be implemented next")]
+        
         private It should_be_able_to_find_all_young_pets_or_rabbits = () =>
         {
             var foundPets = subject.AllPetsBornAfter2011OrRabbits();
