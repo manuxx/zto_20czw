@@ -82,12 +82,24 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPetsButNotMice()
         {
-            throw new NotImplementedException();
+            foreach (var pet in _petsInTheStore)
+            {
+                if (pet.species != Species.Mouse)
+                {
+                    yield return pet;
+                }
+            }
         }
 
         public IEnumerable<Pet> AllPetsBornAfter2010()
         {
-            throw new NotImplementedException();
+            foreach (var pet in _petsInTheStore)
+            {
+                if (pet.yearOfBirth > 2010)
+                {
+                    yield return pet;
+                }
+            }
         }
 
         public IEnumerable<Pet> AllDogsBornAfter2010()
