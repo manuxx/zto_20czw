@@ -1,13 +1,15 @@
+using System;
 using System.Collections.Generic;
-using Training.DomainClasses;
 
-static internal class EnumerableExt
+namespace Training.DomainClasses
 {
-    public static IEnumerable<TItem> OneAtATime<TItem>(this IEnumerable<TItem> items)
+    static internal class EnumerableExt
     {
-        foreach (var item in items)
+        public static IEnumerable<Pet> AllThat(this IList<Pet> pets, Predicate<Pet> condition)
         {
-            yield return item;
+            foreach (var pet in pets)
+                if (condition(pet))
+                    yield return pet;
         }
     }
 }
