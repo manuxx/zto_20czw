@@ -59,7 +59,12 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPetsButNotMice()
         {
-            return _petsInTheStore.AllThat((pet => pet.species != Species.Mouse));
+            return _petsInTheStore.AllThat(IsNotSpeciesOf(Species.Mouse));
+        }
+
+        private static Predicate<Pet> IsNotSpeciesOf(Species species)
+        {
+            return pet => pet.species != species;
         }
 
         public IEnumerable<Pet> AllPetsBornAfter2010()
