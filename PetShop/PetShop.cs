@@ -39,7 +39,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllFemalePets()
         {
-            return _petsInTheStore.AllThat(Pet.IsFemale());
+            return _petsInTheStore.AllThat(Pet.IsSexOf(Sex.Female));
         }
 
         public IEnumerable<Pet> AllPetsBornAfter2010()
