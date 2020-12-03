@@ -29,13 +29,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllCats()
         {
-            foreach (var pet in _petsInTheStore)
-            {
-                if (pet.species == Species.Cat)
-                {
-                    yield return pet;
-                }
-            }
+            return AllThat(pet => pet.species == Species.Cat);
         }
         public IEnumerable<Pet> AllMice()
         {
