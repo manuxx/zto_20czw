@@ -2,7 +2,7 @@ using System;
 
 namespace Training.DomainClasses
 {
-    public class Pet 
+    public class Pet
     {
         public Sex sex;
         public string name { get; set; }
@@ -15,14 +15,14 @@ namespace Training.DomainClasses
             return new SpeciesCriteria(species);
         }
 
-        public static Predicate<Pet> IsFemale()
+        public static Criteria<Pet> IsFemale()
         {
-            return (pet => pet.sex == Sex.Female);
+            return new SexCriteria(Sex.Female);
         }
 
-        public static Predicate<Pet> IsBornAfter(int year)
+        public static Criteria<Pet> IsBornAfter(int year)
         {
-            return pet => pet.yearOfBirth > year;
+            return new BornAfterCriteria(year);
         }
 
         public static Predicate<Pet> IsNotASpeciesOf(Species species)
@@ -43,6 +43,36 @@ namespace Training.DomainClasses
         public bool IsSatisfiedBy(Pet pet)
         {
             return pet.species == _species;
+        }
+    }
+
+    public class SexCriteria : Criteria<Pet>
+    {
+        private readonly Sex _sex;
+
+        public SexCriteria(Sex sex)
+        {
+            this._sex = sex;
+        }
+
+        public bool IsSatisfiedBy(Pet pet)
+        {
+            return pet.sex == _sex;
+        }
+    }
+
+    public class BornAfterCriteria : Criteria<Pet>
+    {
+        private readonly int _birthYear;
+
+        public BornAfterCriteria(int year)
+        {
+            this._birthYear = year;
+        }
+
+        public bool IsSatisfiedBy(Pet pet)
+        {
+            return pet.yearOfBirth > _birthYear;
         }
     }
 }
