@@ -76,7 +76,7 @@ namespace Training.DomainClasses
         public IEnumerable<Pet> AllPetsSortedByName()
         {
             var list = new List<Pet>(_petsInTheStore);
-            list.Sort((pet, pet1) => pet.name.CompareTo(pet1.name));
+            list.Sort((pet, pet1) => String.Compare(pet.name, pet1.name, StringComparison.Ordinal));
             return list;
         }
     }

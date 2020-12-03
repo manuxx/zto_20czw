@@ -14,20 +14,13 @@ static internal class EnumerableExt
 
     public static IEnumerable<TItem> AllThat<TItem>(this IEnumerable<TItem> items, Predicate<TItem> condition)
     {
-        foreach (var item in items)
-            if (condition(item))
-                yield return item;
+        return items.AllThat(new AnonymousCriteria<TItem>(condition));
     }
 
-    public static IEnumerable<TItem> AllThat<TItem>(this IEnumerable<TItem> items, Criteria<TItem> criteria)
+    public static IEnumerable<TItem> AllThat<TItem>(this IEnumerable<TItem> items, ICriteria<TItem> criteria)
     {
         foreach (var item in items)
             if (criteria.IsSatisfiedBy(item))
                 yield return item;
     }
-}
-
-public interface Criteria<TItem>
-{
-    bool IsSatisfiedBy(TItem item);
 }
