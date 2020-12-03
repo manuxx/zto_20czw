@@ -25,6 +25,20 @@ static internal class EnumerableExt
     }
 }
 
+internal class AnonymousCriteria<T> : Criteria<T>
+{
+    private readonly Predicate<T> _condition;
+    public AnonymousCriteria(Predicate<T> condition)
+    {
+        _condition = condition;
+    }
+
+    public bool IsSatisfiedBy(T item)
+    {
+        return _condition(item);
+    }
+}
+
 public interface Criteria<TItem>
 {
     bool IsSatisfiedBy(TItem item);
