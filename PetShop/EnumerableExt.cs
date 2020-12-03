@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Training.DomainClasses;
 
-static internal class EnumerableExt
+internal static class EnumerableExt
 {
     public static IEnumerable<TItem> OneAtATime<TItem>(this IEnumerable<TItem> items)
     {
@@ -23,9 +23,4 @@ static internal class EnumerableExt
             if (criteria.IsSatisfiedBy(item))
                 yield return item;
     }
-}
-
-public interface Criteria<TItem>
-{
-    bool IsSatisfiedBy(TItem item);
 }
