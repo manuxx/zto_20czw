@@ -23,7 +23,7 @@ namespace Training.DomainClasses
             {
                 if (pet.name == newPet.name)
                     return;
-            } 
+            }
             _petsInTheStore.Add(newPet);
         }
 
@@ -65,7 +65,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllMaleDogs()
         {
-            return _petsInTheStore.AllThat((pet => pet.species == Species.Dog && pet.sex== Sex.Male));
+            return _petsInTheStore.AllThat((pet => pet.species == Species.Dog && pet.sex == Sex.Male));
         }
 
         public IEnumerable<Pet> AllPetsBornAfter2011OrRabbits()
@@ -76,7 +76,7 @@ namespace Training.DomainClasses
         public IEnumerable<Pet> AllPetsSortedByName()
         {
             var list = new List<Pet>(_petsInTheStore);
-            list.Sort((pet, pet1) => pet.name.CompareTo(pet1.name));
+            list.Sort((pet, pet1) => String.Compare(pet.name, pet1.name, StringComparison.Ordinal));
             return list;
         }
     }
