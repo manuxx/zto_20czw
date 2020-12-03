@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Training.DomainClasses;
 
@@ -9,5 +10,12 @@ static internal class EnumerableExt
         {
             yield return item;
         }
+    }
+
+    public static IEnumerable<TItem> AllThat<TItem>(this IEnumerable<TItem> items, Predicate<TItem> condition)
+    {
+        foreach (var item in items)
+            if (condition(item))
+                yield return item;
     }
 }

@@ -9,7 +9,13 @@ hodziutko+
 lab2:
 horodecki ++
 kochanski+
-pomiski++
+pomiski+
 siudek+
 pliszka+
 sztenderski+
+
+pomirski+
+lab3:
+
+horodecki+
+pomirski+
