@@ -27,20 +27,18 @@ namespace Training.DomainClasses
             _petsInTheStore.Add(newPet);
         }
 
-
-
         public IEnumerable<Pet> AllCats()
         {
-            return _petsInTheStore.AllThat(pet => pet.species == Species.Cat);
+            return _petsInTheStore.AllThat(IsASpecies(Species.Cat));
         }
         public IEnumerable<Pet> AllMice()
         {
-            return _petsInTheStore.AllThat(pet => pet.species == Species.Mouse);
+            return _petsInTheStore.AllThat(IsASpecies(Species.Mouse));
         }
 
         public IEnumerable<Pet> AllFemalePets()
         {
-            return _petsInTheStore.AllThat(pet => pet.sex == Sex.Female);
+            return _petsInTheStore.AllThat(IsFemale());
 
         }
 
@@ -52,14 +50,32 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPetsButNotMice()
         {
-            return _petsInTheStore.AllThat(pet => pet.species != Species.Mouse);
+            return _petsInTheStore.AllThat(IsNotASpecieOf(Species.Mouse));
 
         }
 
         public IEnumerable<Pet> AllPetsBornAfter2010()
         {
-            return _petsInTheStore.AllThat(pet => pet.yearOfBirth > 2010);
+            return _petsInTheStore.AllThat(IsBornAfter(2010));
 
+        }
+
+        private static Predicate<Pet> IsNotASpecieOf(Species spiecie)
+        {
+            return pet => pet.species != spiecie;
+        }
+        private static Predicate<Pet> IsBornAfter(int year)
+        {
+            return pet => pet.yearOfBirth > year;
+        }
+
+        private static Predicate<Pet> IsASpecies(Species spiecie)
+        {
+            return pet => pet.species == spiecie;
+        }
+        private static Predicate<Pet> IsFemale()
+        {
+            return pet => pet.sex == Sex.Female;
         }
 
         public IEnumerable<Pet> AllDogsBornAfter2010()
@@ -79,6 +95,8 @@ namespace Training.DomainClasses
             return _petsInTheStore.AllThat(pet => pet.species == Species.Rabbit || pet.yearOfBirth > 2011);
 
         }
+
+
 
         public IEnumerable<Pet> AllPetsSortedByName()
         {
