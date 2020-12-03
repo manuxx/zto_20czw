@@ -16,3 +16,6 @@ sztenderski+
 
 pomirski+
 lab3:
+
+horodecki+
+pomirski+
