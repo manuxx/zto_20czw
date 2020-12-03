@@ -17,5 +17,6 @@ sztenderski+
 pomirski+
 lab3:
 
-horodecki+
+horodecki+++
 pomirski+
+pliszka+
