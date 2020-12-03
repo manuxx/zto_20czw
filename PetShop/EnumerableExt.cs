@@ -11,5 +11,17 @@ namespace Training.DomainClasses
                 if (condition(item))
                     yield return item;
         }
+
+        public static IEnumerable<TItem> AllThat<TItem>(this IList<TItem> items, Criteria<TItem> criteria)
+        {
+            foreach (var item in items)
+                if (criteria.IsSatisfiedBy(item))
+                    yield return item;
+        }
+    }
+
+    public interface Criteria<TItem>
+    {
+        bool IsSatisfiedBy(TItem item);
     }
 }
