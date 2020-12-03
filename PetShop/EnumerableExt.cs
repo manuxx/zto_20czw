@@ -13,10 +13,10 @@ static internal class EnumerableExt
     }
 
 
-    public static IEnumerable<Pet> AllThat(this IEnumerable<Pet> pets, Func<Pet, bool> condition)
+    public static IEnumerable<TItem> AllThat<TItem>(this IEnumerable<TItem> items, Func<TItem, bool> condition)
     {
-        foreach (var pet in pets)
-            if (condition(pet))
-                yield return pet;
+        foreach (var item in items)
+            if (condition(item))
+                yield return item;
     }
 }
