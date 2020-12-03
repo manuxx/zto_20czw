@@ -7,9 +7,22 @@ namespace Training.DomainClasses
     {
         public static IEnumerable<TItem> AllThat<TItem>(this IList<TItem> items, Predicate<TItem> condition)
         {
-            foreach (var item in items)
-                if (condition(item))
-                    yield return item;
+            return items.AllThat(new AnonymousCriteria<TItem>(condition));
+        }
+
+        internal class AnonymousCriteria<TItem> : Criteria<TItem>
+        {
+            private readonly Predicate<TItem> _condition;
+
+            public AnonymousCriteria(Predicate<TItem> condition)
+            {
+                _condition = condition;
+            }
+
+            public bool IsSatisfiedBy(TItem item)
+            {
+                return _condition(item);
+            }
         }
 
         public static IEnumerable<TItem> AllThat<TItem>(this IList<TItem> items, Criteria<TItem> criteria)
