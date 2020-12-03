@@ -24,8 +24,3 @@ static internal class EnumerableExt
                 yield return item;
     }
 }
-
-public interface Criteria<TItem>
-{
-    bool IsSatisfiedBy(TItem item);
-}
