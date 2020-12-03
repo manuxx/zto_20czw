@@ -47,12 +47,12 @@ namespace Training.DomainClasses
         
         public IEnumerable<Pet> AllMice()
         {
-            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Filter(pet => pet.species.Equals(Species.Mouse)));
+            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Filter(Pet.IsSpecies(Species.Mouse)));
         }
 
         public IEnumerable<Pet> AllFemalePets()
         {
-            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Filter(pet => pet.sex.Equals(Sex.Female)));
+            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Filter(Pet.IsSex(Sex.Female)));
         }
 
         public IEnumerable<Pet> AllCatsOrDogs()
@@ -62,12 +62,12 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPetsButNotMice()
         {
-            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Filter(pet => !pet.species.Equals(Species.Mouse)));
+            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Filter(Pet.IsNotSpecies(Species.Mouse)));
         }
 
         public IEnumerable<Pet> AllPetsBornAfter2010()
         {
-            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Filter(pet => pet.yearOfBirth > 2010));
+            return new ReadOnlyWrapper<Pet>(_petsInTheStore.Filter(Pet.IsBornAfter(2010)));
         }
 
         public IEnumerable<Pet> AllDogsBornAfter2010()
