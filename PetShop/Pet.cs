@@ -15,7 +15,7 @@ namespace Training.DomainClasses
             return new SpeciesCriteria(species);
         }
 
-        public Predicate<Pet> IsFemale()
+        public static Predicate<Pet> IsFemale()
         {
             return pet => pet.sex == Sex.Female;
         }
