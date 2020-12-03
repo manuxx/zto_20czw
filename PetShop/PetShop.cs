@@ -12,13 +12,6 @@ namespace Training.DomainClasses
             this._petsInTheStore = petsInTheStore;
         }
 
-        private IEnumerable<Pet> AllThat(Func<Pet, bool> condition)
-        {
-            foreach (var pet in _petsInTheStore)
-                if (condition(pet))
-                    yield return pet;
-        }
-
         public IEnumerable<Pet> AllPets()
         {
             return new ReadOnlyWrapper<Pet>(_petsInTheStore);
@@ -43,6 +36,13 @@ namespace Training.DomainClasses
                     yield return pet;
                 }
             }
+        }
+
+        private IEnumerable<Pet> AllThat(Predicate<Pet> condition)
+        {
+            foreach (var pet in _petsInTheStore)
+                if (condition(pet))
+                    yield return pet;
         }
         public IEnumerable<Pet> AllMice()
         {
