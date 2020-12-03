@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace Training.DomainClasses
 {
@@ -15,19 +16,64 @@ namespace Training.DomainClasses
             return new SpeciesCriteria(species);
         }
 
-        public static Predicate<Pet> IsFemale()
+        public static Criteria<Pet> IsFemale()
         {
-            return (pet => pet.sex == Sex.Female);
+            return new SexCriteria(Sex.Female);
         }
 
-        public static Predicate<Pet> IsBornAfter(int year)
+        public static Criteria<Pet> IsBornAfter(int year)
         {
-            return pet => pet.yearOfBirth > year;
+            return new BornCriteria(year);
         }
 
-        public static Predicate<Pet> IsNotASpeciesOf(Species species)
+        public static Criteria<Pet> IsNotASpeciesOf(Species species)
         {
-            return pet => pet.species != species;
+            return new NotSpeciesCriteria(species);
+        }
+    }
+
+    public class NotSpeciesCriteria : Criteria<Pet>
+    {
+        private readonly Species _species;
+
+        public NotSpeciesCriteria(Species species)
+        {
+            _species = species;
+        }
+
+        public bool IsSatisfiedBy(Pet item)
+        {
+            return item.species != _species;
+        }
+    }
+
+    public class BornCriteria : Criteria<Pet>
+    {
+        private readonly int _year;
+
+        public BornCriteria(int year)
+        {
+            _year = year;
+        }
+
+        public bool IsSatisfiedBy(Pet item)
+        {
+            return item.yearOfBirth > _year;
+        }
+    }
+
+    public class SexCriteria : Criteria<Pet>
+    {
+        private readonly Sex _sex;
+
+        public SexCriteria(Sex sex)
+        {
+            _sex = sex;
+        }
+
+        public bool IsSatisfiedBy(Pet item)
+        {
+            return item.sex == _sex;
         }
     }
 
