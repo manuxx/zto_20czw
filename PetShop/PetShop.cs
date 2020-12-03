@@ -29,8 +29,14 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllCats()
         {
-            return _petsInTheStore.AllThat((pet => pet.species == Species.Cat));
+            return _petsInTheStore.AllThat(IsACat);
         }
+
+        private bool IsACat(Pet pet)
+        {
+            return pet.species == Species.Cat;
+        }
+
         public IEnumerable<Pet> AllMice()
         {
             return _petsInTheStore.AllThat((pet => pet.species == Species.Mouse));
