@@ -12,7 +12,7 @@ static internal class EnumerableExt
         }
     }
 
-    public static IEnumerable<TItem> AllThat<TItem>(IEnumerable<TItem> items, Predicate<TItem> condition)
+    public static IEnumerable<TItem> AllThat<TItem>(this IEnumerable<TItem> items, Predicate<TItem> condition)
     {
         foreach (var item in items)
             if (condition(item))
