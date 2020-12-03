@@ -29,7 +29,22 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllCats()
         {
-            return _petsInTheStore.AllThat((pet => pet.species == Species.Cat));
+            return _petsInTheStore.AllThat(isSpecies((Species.Cat)));
+        }
+
+        private static Predicate<Pet> isFemale()
+        {
+            return (pet => pet.sex == Sex.Female);
+        }
+
+        private static Predicate<Pet> isSpecies(Species species)
+        {
+            return (pet => pet.species == species);
+        }
+
+        private static Predicate<Pet> isBornAfter(int year)
+        {
+            return (pet => pet.yearOfBirth > year);
         }
 
         public IEnumerable<Pet> AllMice()
@@ -39,7 +54,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllFemalePets()
         {
-            return _petsInTheStore.AllThat((pet => pet.sex == Sex.Female));
+            return _petsInTheStore.AllThat(isFemale());
         }
 
         public IEnumerable<Pet> AllCatsOrDogs()
@@ -54,7 +69,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPetsBornAfter2010()
         {
-            return _petsInTheStore.AllThat((pet => pet.yearOfBirth > 2010));
+            return _petsInTheStore.AllThat(isBornAfter(2010));
         }
 
         public IEnumerable<Pet> AllDogsBornAfter2010()
