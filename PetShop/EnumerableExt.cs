@@ -12,13 +12,13 @@ static internal class EnumerableExt
         }
     }
 
-    public static IEnumerable<Pet> AllThat(this IEnumerable<Pet> pets, Predicate<Pet> condition)
+    public static IEnumerable<TItem> AllThat<TItem>(this IEnumerable<TItem> items, Predicate<TItem> condition)
     {
-        foreach (var pet in pets)
+        foreach (var item in items)
         {
-            if (condition(pet))
+            if (condition(item))
             {
-                yield return pet;
+                yield return item;
             }
         }
     }
