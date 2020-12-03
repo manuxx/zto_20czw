@@ -7,20 +7,20 @@ static internal class EnumerableExt
     internal class AnonymousCriteria<TItem> : Criteria<TItem>
     {
         private readonly Predicate<TItem> _condition;
-
- 
-
+        
         public AnonymousCriteria(Predicate<TItem> condition)
         {
             _condition = condition;
         }
-
- 
-
+        
         public bool IsSatisfiedBy(TItem item)
         {
             return _condition(item);
         }
+    }
+    public static Predicate<Pet> IsNotASpeciesOf(Species species)
+    {
+        return pet => pet.species != species;
     }
     public static IEnumerable<TItem> OneAtATime<TItem>(this IEnumerable<TItem> items)
     {
