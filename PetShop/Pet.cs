@@ -15,34 +15,66 @@ namespace Training.DomainClasses
             return new SpeciesCriteria(species);
         }
 
-        public static Predicate<Pet> IsFemale()
+        public static Criteria<Pet> IsFemale()
         {
-            return (pet => pet.sex == Sex.Female);
+            return new SexCriteria(Sex.Female);
         }
 
-        public static Predicate<Pet> IsBornAfter(int year)
+        public static Criteria<Pet> IsBornAfter(int year)
         {
-            return pet => pet.yearOfBirth > year;
+            return new BornAfterCriteria(year);
         }
 
         public static Predicate<Pet> IsNotASpeciesOf(Species species)
         {
             return pet => pet.species != species;
         }
-    }
 
-    public class SpeciesCriteria : Criteria<Pet>
-    {
-        private readonly Species _species;
-
-        public SpeciesCriteria(Species species)
+        public class SpeciesCriteria : Criteria<Pet>
         {
-            _species = species;
+            private readonly Species _species;
+
+            public SpeciesCriteria(Species species)
+            {
+                _species = species;
+            }
+
+            public bool IsSatisfiedBy(Pet item)
+            {
+                return item.species == _species;
+            }
         }
 
-        public bool IsSatisfiedBy(Pet item)
+        public class SexCriteria : Criteria<Pet>
         {
-            return item.species == _species;
+            private readonly Sex _sex;
+
+            public SexCriteria(Sex sex)
+            {
+                _sex = sex;
+            }
+
+            public bool IsSatisfiedBy(Pet item)
+            {
+                return item.sex == _sex;
+            }
+        }
+
+        public class BornAfterCriteria : Criteria<Pet>
+        {
+            private readonly int _yearOfBirth;
+
+            public BornAfterCriteria(int yearOfBirth)
+            {
+                _yearOfBirth = yearOfBirth;
+            }
+
+            public bool IsSatisfiedBy(Pet item)
+            {
+                return item.yearOfBirth > _yearOfBirth;
+            }
         }
     }
+
+    
 }
