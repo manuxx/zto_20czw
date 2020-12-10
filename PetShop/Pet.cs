@@ -19,6 +19,11 @@ namespace Training.DomainClasses
         {
             return new SexCriteria(Sex.Female);
         }
+        
+        public static ICriteria<Pet> IsMale()
+        {
+            return new SexCriteria(Sex.Male);
+        }
 
         public static ICriteria<Pet> IsBornAfter(int year)
         {
