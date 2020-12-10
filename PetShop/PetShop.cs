@@ -65,7 +65,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllMaleDogs()
         {
-            return _petsInTheStore.AllThat(new Conjunction<Pet>(Pet.IsSpeciesOf(Species.Dog), new Negation<Pet>(Pet.IsFemale())));
+            return _petsInTheStore.AllThat(new Conjunction<Pet>(Pet.IsSpeciesOf(Species.Dog), Pet.IsMale()));
         }
 
         public IEnumerable<Pet> AllPetsBornAfter2011OrRabbits()
