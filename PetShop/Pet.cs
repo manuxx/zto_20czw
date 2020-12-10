@@ -25,11 +25,6 @@ namespace Training.DomainClasses
             return new BornAfterCriteria(year);
         }
 
-        public static Criteria<Pet> IsNotASpeciesOf(Species species)
-        {
-            return new Negation<Pet>(IsSpeciesOf(species));
-        }
-
         public class SpeciesCriteria : Criteria<Pet>
         {
             private readonly Species _species;
