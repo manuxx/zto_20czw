@@ -22,3 +22,7 @@ pomirski+
 pliszka+
 
 lab4:
+horodecki++
+sztenderski+
+wikialis+
+Stanuch+
