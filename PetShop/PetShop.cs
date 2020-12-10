@@ -81,18 +81,4 @@ namespace Training.DomainClasses
         }
     }
 
-    public class Alternative<TItem> : Criteria<TItem>
-    {
-        private Criteria<TItem> criteria1, criteria2;
-        public Alternative(Criteria<TItem> criteria1, Criteria<TItem> criteria2)
-        {
-            this.criteria1 = criteria1;
-            this.criteria2 = criteria2;
-        }
-
-        public bool IsSatisfiedBy(TItem item)
-        {
-            return criteria1.IsSatisfiedBy(item) || criteria2.IsSatisfiedBy(item);
-        }
-    }
 }
