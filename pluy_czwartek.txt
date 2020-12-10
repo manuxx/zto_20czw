@@ -23,7 +23,7 @@ pliszka+
 
 lab4:
 horodecki++++
-sztenderski++
+sztenderski+++
 wikialis+
 Stanuch+
-
+pomirski+
