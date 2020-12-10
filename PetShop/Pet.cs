@@ -71,26 +71,10 @@ namespace Training.DomainClasses
             }
         }
 
-<<<<<<< HEAD
-
-        public class Negation<TItem> : Criteria<TItem>
-        {
-            private readonly Criteria<TItem> _innerCriteria;
-
-            public Negation(Criteria<TItem> isSpeciesOf)
-            {
-                _innerCriteria = isSpeciesOf;
-            }
-
-            public bool IsSatisfiedBy(TItem item)
-            {
-                return !_innerCriteria.IsSatisfiedBy(item);
-            }
-=======
         public static Criteria<Pet> IsMale()
         {
             return new SexCriteria(Sex.Male);
->>>>>>> 46d04d6051b0d4ec9ae145ac695783caf1a4003d
+
         }
     }
 
