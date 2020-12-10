@@ -10,7 +10,5 @@ namespace Training.DomainClasses
             _leftCriteria = leftCriteria;
             _rightCriteria = rightCriteria;
         }
-
-        public abstract bool IsSatisfiedBy(TItem item);
     }
 }

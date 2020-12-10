@@ -1,4 +1,11 @@
-public interface Criteria<TItem>
+using Training.DomainClasses;
+
+public abstract class Criteria<TItem>
 {
-    bool IsSatisfiedBy(TItem item);
+    public abstract bool IsSatisfiedBy(TItem item);
+
+    public Criteria<TItem> And(Criteria<TItem> criteria)
+    {
+        return new Conjuction<TItem>(this, criteria);
+    }
 }

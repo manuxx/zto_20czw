@@ -1,5 +1,3 @@
-using System;
-
 namespace Training.DomainClasses
 {
     public class Pet 
@@ -34,7 +32,7 @@ namespace Training.DomainClasses
                 _species = species;
             }
 
-            public bool IsSatisfiedBy(Pet item)
+            public override bool IsSatisfiedBy(Pet item)
             {
                 return item.species == _species;
             }
@@ -49,7 +47,7 @@ namespace Training.DomainClasses
                 _sex = sex;
             }
 
-            public bool IsSatisfiedBy(Pet item)
+            public override bool IsSatisfiedBy(Pet item)
             {
                 return item.sex == _sex;
             }
@@ -64,7 +62,7 @@ namespace Training.DomainClasses
                 _yearOfBirth = yearOfBirth;
             }
 
-            public bool IsSatisfiedBy(Pet item)
+            public override bool IsSatisfiedBy(Pet item)
             {
                 return item.yearOfBirth > _yearOfBirth;
             }
