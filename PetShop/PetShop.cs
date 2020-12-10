@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Training.DomainClasses.Training.DomainClasses;
 
 namespace Training.DomainClasses
 {
@@ -66,7 +65,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllMaleDogs()
         {
-            return _petsInTheStore.AllThat((pet => pet.species == Species.Dog && pet.sex== Sex.Male));
+            return _petsInTheStore.AllThat(new Conjuction<Pet>(Pet.IsSpeciesOf(Species.Dog), Pet.IsMale()));
         }
 
         public IEnumerable<Pet> AllPetsBornAfter2011OrRabbits()
