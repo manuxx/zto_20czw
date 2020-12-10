@@ -3,18 +3,18 @@
     namespace Training.DomainClasses
     {
         public class Alternative<T> : Criteria<T> {
-            private Criteria<T> _criteriaOne;
-            private Criteria<T> _criteriaTwo;
+            private Criteria<T> _criteriaLeft;
+            private Criteria<T> _criteriaRight;
 
-            public Alternative(Criteria<T> criteriaOne, Criteria<T> criteriaTwo)
+            public Alternative(Criteria<T> criteriaLeft, Criteria<T> criteriaRight)
             {
-                _criteriaOne = criteriaOne;
-                _criteriaTwo = criteriaTwo;
+                _criteriaLeft = criteriaLeft;
+                _criteriaRight = criteriaRight;
             }
 
             public bool IsSatisfiedBy(T item)
             {
-                return _criteriaOne.IsSatisfiedBy(item) || _criteriaTwo.IsSatisfiedBy(item);
+                return _criteriaLeft.IsSatisfiedBy(item) || _criteriaRight.IsSatisfiedBy(item);
             }
         }
     }
