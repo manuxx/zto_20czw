@@ -22,7 +22,8 @@ pomirski+
 pliszka+
 
 lab4:
-horodecki++
-sztenderski+
+horodecki++++
+sztenderski++
 wikialis+
 Stanuch+
+
