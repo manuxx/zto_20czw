@@ -76,5 +76,18 @@ namespace Training.DomainClasses
         }
     }
 
-    
+    public class Negation<Pet> : Criteria<Pet>
+    {
+        private readonly Criteria<Pet> _criteria;
+
+        public Negation(Criteria<Pet> criteria)
+        {
+            _criteria = criteria;
+        }
+
+        public bool IsSatisfiedBy(Pet item)
+        {
+            return !_criteria.IsSatisfiedBy(item);
+        }
+    }
 }
