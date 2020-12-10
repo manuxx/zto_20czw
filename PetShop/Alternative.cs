@@ -1,17 +1,12 @@
 namespace Training.DomainClasses
 {
-    public class Alternative<TItem> : Criteria<TItem>
+    public class Alternative<TItem> : BinaryCriteria<TItem>
     {
-        private readonly Criteria<TItem> _item1;
-        private readonly Criteria<TItem> _item2;
-
-        public Alternative(Criteria<TItem> item1, Criteria<TItem> item2)
+        public Alternative(Criteria<TItem> item1, Criteria<TItem> item2) : base(item1, item2)
         {
-            _item1 = item1;
-            _item2 = item2;
         }
 
-        public bool IsSatisfiedBy(TItem item)
+        public override bool IsSatisfiedBy(TItem item)
         {
             return _item1.IsSatisfiedBy(item) || _item2.IsSatisfiedBy(item);
         }
