@@ -39,7 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alternative.cs" />
     <Compile Include="AnonymousCriteria.cs" />
+    <Compile Include="Conjuction.cs" />
     <Compile Include="Criteria.cs" />
     <Compile Include="EnumerableExt.cs" />
     <Compile Include="EnviromentType.cs" />

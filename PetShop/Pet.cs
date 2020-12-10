@@ -74,5 +74,10 @@ namespace Training.DomainClasses
                 return item.yearOfBirth > _yearOfBirth;
             }
         }
+
+        public static Criteria<Pet> IsMale()
+        {
+            return new SexCriteria(Sex.Male);
+        }
     }
 }
