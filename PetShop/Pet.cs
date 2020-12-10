@@ -30,6 +30,21 @@ namespace Training.DomainClasses
             return new Negation<Pet>(IsSpeciesOf(species));
         }
 
+        public class Negation<TItem> : Criteria<TItem>
+        {
+            private readonly Criteria<TItem> _innerCriteria;
+
+            public Negation(Criteria<TItem> innerCriteria)
+            {
+                _innerCriteria = innerCriteria;
+            }
+
+            public bool IsSatisfiedBy(TItem item)
+            {
+                return !_innerCriteria.IsSatisfiedBy(item);
+            }
+        }
+
         public class SpeciesCriteria : Criteria<Pet>
         {
             private readonly Species _species;
