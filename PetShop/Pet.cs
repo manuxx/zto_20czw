@@ -71,6 +71,7 @@ namespace Training.DomainClasses
             }
         }
 
+<<<<<<< HEAD
 
         public class Negation<TItem> : Criteria<TItem>
         {
@@ -85,6 +86,11 @@ namespace Training.DomainClasses
             {
                 return !_innerCriteria.IsSatisfiedBy(item);
             }
+=======
+        public static Criteria<Pet> IsMale()
+        {
+            return new SexCriteria(Sex.Male);
+>>>>>>> 46d04d6051b0d4ec9ae145ac695783caf1a4003d
         }
     }
 
