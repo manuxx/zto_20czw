@@ -1,6 +1,3 @@
-using System;
-using PetShop;
-
 namespace Training.DomainClasses
 {
     public class Pet 
@@ -24,11 +21,6 @@ namespace Training.DomainClasses
         public static Criteria<Pet> IsBornAfter(int year)
         {
             return new BornAfterCriteria(year);
-        }
-
-        public static Criteria<Pet> IsNotASpeciesOf(Species species)
-        {
-            return new Negation<Pet>(IsSpeciesOf(species));
         }
 
         public class SpeciesCriteria : Criteria<Pet>
@@ -76,6 +68,4 @@ namespace Training.DomainClasses
             }
         }
     }
-
-    
 }

@@ -1,13 +1,17 @@
-﻿namespace PetShop{
-    public class Negation<T> : Criteria<T> {
-        private Criteria<T> _criteria;
+namespace Training.DomainClasses
+{
+    public class Negation<TItem> : Criteria<TItem>
+    {
+        private readonly Criteria<TItem> _innerCriteria;
 
-        public Negation(Criteria<T> criteria) {
-            _criteria = criteria;
+        public Negation(Criteria<TItem> innerCriteria)
+        {
+            _innerCriteria = innerCriteria;
         }
 
-        public bool IsSatisfiedBy(T item) {
-            return !_criteria.IsSatisfiedBy(item);
+        public bool IsSatisfiedBy(TItem item)
+        {
+            return ! _innerCriteria.IsSatisfiedBy(item);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Training.DomainClasses.Training.DomainClasses;
 
 namespace Training.DomainClasses
 {
@@ -49,12 +50,12 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllCatsOrDogs()
         {
-            return _petsInTheStore.AllThat((pet => pet.species == Species.Cat || pet.species == Species.Dog));
+            return _petsInTheStore.AllThat(new Alternative<Pet>(Pet.IsSpeciesOf(Species.Cat), Pet.IsSpeciesOf(Species.Dog)));
         }
 
         public IEnumerable<Pet> AllPetsButNotMice()
         {
-            return _petsInTheStore.AllThat(Pet.IsNotASpeciesOf(Species.Mouse));
+            return _petsInTheStore.AllThat(new Negation<Pet>(Pet.IsSpeciesOf(Species.Mouse)));
         }
 
 
