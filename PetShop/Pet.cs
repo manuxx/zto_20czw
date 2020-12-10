@@ -79,15 +79,15 @@ namespace Training.DomainClasses
 
     public class Negation<TItem> : Criteria<TItem>
     {
-        private readonly Criteria<TItem> _speciesCriteria;
+        private readonly Criteria<TItem> _innerCriteria;
         public Negation(Criteria<TItem> isSpeciesOf)
         {
-            _speciesCriteria = isSpeciesOf;
+            _innerCriteria = isSpeciesOf;
         }
 
         public bool IsSatisfiedBy(TItem item)
         {
-            return !_speciesCriteria.IsSatisfiedBy(item);
+            return !_innerCriteria.IsSatisfiedBy(item);
         }
     }
 }
