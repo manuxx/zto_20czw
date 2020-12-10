@@ -2,7 +2,7 @@ namespace Training.DomainClasses
 {
     public class Negation<TItem> : Criteria<TItem>
     {
-        private Criteria<TItem> _innerCriteria;
+        private readonly Criteria<TItem> _innerCriteria;
 
         public Negation(Criteria<TItem> innerCriteria)
         {
@@ -11,7 +11,7 @@ namespace Training.DomainClasses
 
         public bool IsSatisfiedBy(TItem item)
         {
-            return !_innerCriteria.IsSatisfiedBy(item);
+            return ! _innerCriteria.IsSatisfiedBy(item);
         }
     }
 }
