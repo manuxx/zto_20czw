@@ -9,7 +9,7 @@ namespace Training.DomainClasses
             _innerCriteria = innerCriteria;
         }
 
-        public override bool IsSatisfiedBy(TItem item)
+        public virtual bool IsSatisfiedBy(TItem item)
         {
             return ! _innerCriteria.IsSatisfiedBy(item);
         }

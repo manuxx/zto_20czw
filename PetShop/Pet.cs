@@ -34,7 +34,7 @@ namespace Training.DomainClasses
                 _species = species;
             }
 
-            public override bool IsSatisfiedBy(Pet item)
+            public virtual bool IsSatisfiedBy(Pet item)
             {
                 return item.species == _species;
             }
@@ -49,7 +49,7 @@ namespace Training.DomainClasses
                 _sex = sex;
             }
 
-            public override bool IsSatisfiedBy(Pet item)
+            public virtual bool IsSatisfiedBy(Pet item)
             {
                 return item.sex == _sex;
             }
@@ -64,7 +64,7 @@ namespace Training.DomainClasses
                 _yearOfBirth = yearOfBirth;
             }
 
-            public override bool IsSatisfiedBy(Pet item)
+            public virtual bool IsSatisfiedBy(Pet item)
             {
                 return item.yearOfBirth > _yearOfBirth;
             }
