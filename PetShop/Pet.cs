@@ -25,11 +25,6 @@ namespace Training.DomainClasses
             return new BornAfterCriteria(year);
         }
 
-        public static Criteria<Pet> IsNotASpeciesOf(Species species)
-        {
-            return new Negation<Pet>(IsSpeciesOf(species));
-        }
-
         public class SpeciesCriteria : Criteria<Pet>
         {
             private readonly Species _species;
@@ -73,21 +68,6 @@ namespace Training.DomainClasses
             {
                 return item.yearOfBirth > _yearOfBirth;
             }
-        }
-    }
-
-    public class Negation<T> : Criteria<T>
-    {
-        private Criteria<T> _criteria;
-
-        public Negation(Criteria<T> criteria)
-        {
-            _criteria = criteria;
-        }
-
-        public bool IsSatisfiedBy(T item)
-        {
-            return !_criteria.IsSatisfiedBy(item);
         }
     }
 }
