@@ -3,7 +3,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace Training.DomainClasses
 {
-    public class Pet 
+    public class Pet
     {
         public Sex sex;
         public string name { get; set; }
@@ -70,22 +70,22 @@ namespace Training.DomainClasses
                 return item.yearOfBirth > _yearOfBirth;
             }
         }
-    }
-<<<<<<< HEAD
 
-    public class Negation<TItem> : Criteria<TItem>
-    {
-        private readonly Criteria<TItem> _innerCriteria;
-        public Negation(Criteria<TItem> isSpeciesOf)
-        {
-            _innerCriteria = isSpeciesOf;
-        }
 
-        public bool IsSatisfiedBy(TItem item)
+        public class Negation<TItem> : Criteria<TItem>
         {
-            return !_innerCriteria.IsSatisfiedBy(item);
+            private readonly Criteria<TItem> _innerCriteria;
+
+            public Negation(Criteria<TItem> isSpeciesOf)
+            {
+                _innerCriteria = isSpeciesOf;
+            }
+
+            public bool IsSatisfiedBy(TItem item)
+            {
+                return !_innerCriteria.IsSatisfiedBy(item);
+            }
         }
     }
-=======
->>>>>>> 96bc35e568c92b2f628f28ef132324ec1dc3f6ab
+
 }
