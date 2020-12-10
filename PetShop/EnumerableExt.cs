@@ -12,10 +12,6 @@ static internal class EnumerableExt
         }
     }
 
-    public static IEnumerable<TItem> AllThat<TItem>(this IEnumerable<TItem> items, Predicate<TItem> condition)
-    {
-        return items.AllThat(new AnonymousCriteria<TItem>(condition));
-    }
 
     public static IEnumerable<TItem> AllThat<TItem>(this IEnumerable<TItem> items, Criteria<TItem> criteria)
     {

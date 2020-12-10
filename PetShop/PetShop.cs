@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Training.DomainClasses
 {
@@ -70,7 +71,7 @@ namespace Training.DomainClasses
 
         public IEnumerable<Pet> AllPetsBornAfter2011OrRabbits()
         {
-            return _petsInTheStore.AllThat((pet => pet.species == Species.Rabbit || pet.yearOfBirth > 2011));
+            return _petsInTheStore.AllThat(Pet.IsSpeciesOf(Species.Rabbit).Or(Pet.IsBornAfter(2011)));
         }
 
         public IEnumerable<Pet> AllPetsSortedByName()
