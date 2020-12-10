@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace Training.DomainClasses
 {
@@ -76,5 +77,17 @@ namespace Training.DomainClasses
         }
     }
 
-    
+    public class Negation<TItem> : Criteria<TItem>
+    {
+        private readonly Criteria<TItem> _speciesCriteria;
+        public Negation(Criteria<TItem> isSpeciesOf)
+        {
+            _speciesCriteria = isSpeciesOf;
+        }
+
+        public bool IsSatisfiedBy(TItem item)
+        {
+            return !_speciesCriteria.IsSatisfiedBy(item);
+        }
+    }
 }
