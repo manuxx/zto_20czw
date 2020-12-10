@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Training.DomainClasses;
 
-static internal class EnumerableExt
+public static class EnumerableExt
 {
     public static IEnumerable<TItem> OneAtATime<TItem>(this IEnumerable<TItem> items)
     {
