@@ -27,11 +27,6 @@ namespace Training.DomainClasses
             _petsInTheStore.Add(newPet);
         }
 
-        public IEnumerable<Pet> AllCats()
-        {
-            return AllPets().AllThat(Pet.IsSpeciesOf(Species.Cat));
-        }
-
         public IEnumerable<Pet> AllMice()
         {
             return _petsInTheStore.AllThat(Pet.IsSpeciesOf(Species.Mouse));
